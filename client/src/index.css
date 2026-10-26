@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased font-sans selection:bg-teal-500 selection:text-white;
+  }
+}
+
+/* Custom Healthcare Component Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.gradient-hero {
+  background: radial-gradient(circle at 10% 20%, rgba(204, 251, 241, 0.6) 0%, rgba(240, 253, 250, 0.2) 60%),
+              radial-gradient(circle at 90% 80%, rgba(224, 242, 254, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+.badge-verified {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200;
+}
+
+.badge-pending {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200;
+}
+
+.badge-urgent {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 animate-pulse;
+}
+
+.badge-stale {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-900 border border-amber-300;
+}
