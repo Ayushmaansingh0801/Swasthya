@@ -1,0 +1,219 @@
+--- page 1 ---
+
+Antigravity + Cline | Cloud Deployment Master Prompt
+Page 1
+ ANTIGRAVITY + CLINE
+ MASTER PROMPT
+Automatic Cloud Deployment • Centralized Database • Realtime Sync • Mobile Testing
+Purpose
+A ready-to-paste implementation prompt for your coding agent. It instructs the agent to inspect your existing
+app, preserve its current stack, configure suitable cloud infrastructure, run checks, and clearly identify any
+account or credential steps that still need you.
+Important
+A prompt cannot independently create accounts or authorize external deployments. Cline may need your
+approval, login, credentials, or manual setup for remote services. The prompt explicitly requires honest
+verification and prohibits exposing secrets or claiming unverified success.
+ Copy the full prompt from the following pages into Cline with your existing project
+ folder open.
+
+--- page 2 ---
+
+Antigravity + Cline | Cloud Deployment Master Prompt
+Page 2
+MASTER PROMPT — COPY FROM HERE
+Paste the complete prompt below into Cline. Keep your existing project open as the workspace.
+ROLE AND OBJECTIVE
+Act as a Senior Full-Stack Engineer, DevOps Engineer, Cloud Architect, Database Engineer, Security Engineer,
+and QA Automation Engineer.
+Inspect my EXISTING application and implement a complete, production-conscious cloud deployment and
+testing infrastructure with as much safe automation as possible. Work directly in the existing project
+workspace. Do not merely explain the solution: inspect files, make compatible changes, run available checks,
+and prepare the app for deployment.
+Continue until you reach a real external dependency, missing credential, account authorization requirement,
+or genuine blocker. Ask for only the decisions or approvals that are actually needed, and continue all
+independent safe work.
+Never claim a deployment, database connection, test, or integration succeeded unless you have actually
+verified it.
+PHASE 1 — AUDIT THE EXISTING PROJECT
+Before editing, inspect the project structure and identify the frontend/backend frameworks and versions,
+languages, package manager, database, authentication, API architecture, environment configuration, file
+uploads, realtime features, build/test commands, and any existing deployment setup.
+Determine whether the project is React/Vite, Next.js, Flutter, React Native/Expo, native Android, or another
+stack. Detect existing integrations such as Supabase, Firebase, MongoDB, PostgreSQL, or MySQL.
+Create DEPLOYMENT_AUDIT.md with the discovered architecture, issues, recommended deployment strategy,
+required credentials, and implementation plan. Preserve the existing stack, features, routes, design, and user
+experience. Do not replace the application unnecessarily.
+PHASE 2 — CHOOSE A COMPATIBLE CLOUD ARCHITECTURE
+Choose services based on the actual project, compatibility, security, cost, and maintenance requirements.
+Preferred options when compatible:
+• Frontend: Vercel, Cloudflare Pages, or existing suitable hosting.
+• Backend: a suitable managed application host, existing backend platform, or Supabase Edge Functions only
+when appropriate.
+• Database: Supabase PostgreSQL for a suitable relational model; preserve an existing production database if
+migration would introduce unnecessary risk. If the project already uses MongoDB, evaluate continuing with
+MongoDB Atlas.
+• Source control: GitHub with automatic deployment integration.
+Avoid duplicate backends/databases. Prefer free tiers where practical, but verify current pricing, limits,
+quotas, and availability. Do not promise unlimited free usage.
+Create DEPLOYMENT_ARCHITECTURE.md with a text-based architecture diagram and rationale. Do not
+assume that a selected service is connected or deployed until verified.
+PHASE 3 — CENTRALIZED CLOUD DATABASE
+Configure shared cloud persistence so authorized users' data is stored centrally, not only in browser memory
+or local storage.
+ • Build schema and tables from the app's real data model.
+ • Add appropriate primary/foreign keys, constraints, indexes, and timestamps.
+ • Preserve user-record relationships and data across reloads, restarts, and devices.
+ • Implement loading, success, empty, error, and retry states.
+ 
+--- page 3 ---
+
+Antigravity + Cline | Cloud Deployment Master Prompt
+Page 3
+• Handle concurrent writes, retries, idempotency, pagination, and transactions where appropriate.
+ • Document backups and recovery based on the provider.
+ If Supabase is selected, configure a compatible client, migration files, environment-variable references,
+necessary tables/indexes, Row Level Security (RLS), explicit least-privilege policies, ownership rules, and
+Realtime only where required.
+Local migration files do not automatically create remote tables. Do not claim remote setup is complete until
+migrations are applied and verified. If credentials are unavailable, prepare files and give exact remaining
+steps. Never expose service-role keys or privileged credentials in frontend code.
+PHASE 4 — REALTIME SYNCHRONIZATION
+Implement realtime synchronization only where the product needs it and only for authorized records.
+Expected flow: User A creates or updates a record; the database persists it; authorized User B receives the
+permitted update; the relevant UI refreshes or updates its state.
+Support appropriate inserts, updates, and deletes; clean up subscriptions; prevent duplicate event handlers;
+handle disconnect/reconnect; show sync status; prevent stale writes; and avoid unnecessary subscriptions.
+Configure required publication and authorization settings for the chosen provider.
+Do not make private data public just to simplify synchronization. If records are user-specific, preserve strict
+isolation. Verify realtime behavior rather than assuming it works.
+PHASE 5 — AUTHENTICATION AND AUTHORIZATION
+Audit existing authentication before adding another system. If needed, choose one compatible with the
+current stack.
+Implement secure signup/login, logout, session handling, protected routes and APIs, password reset where
+applicable, user-specific record access, and role-based permissions if the app has roles. Validate authorization
+on the server; frontend route guards alone are insufficient. Never trust a client-supplied user ID without
+authorization checks. Never store plaintext passwords or expose privileged credentials.
+For medical, financial, or other sensitive information, apply stricter access controls and document applicable
+privacy/compliance requirements. Do not claim regulatory compliance or certification without verification.
+PHASE 6 — GITHUB-BASED AUTOMATIC DEPLOYMENT
+Configure GitHub-based automatic deployment where supported.
+Expected flow: edit code locally → push to GitHub → automated build/deployment → updated hosted app.
+Configure correct build commands, output directory, environment references, routes/rewrites, API routing,
+CORS, and production settings. Add build checks, preview/staging deployment where practical, rollback
+documentation, and secret protection.
+Adapt branching to the existing repository. A possible strategy is main for production, staging for shared
+testing, and feature branches for development. Do not force-push, rewrite Git history, delete branches,
+overwrite remotes, or change remote settings without authorization.
+If the repository/host is not connected, prepare the required files and give exact connection steps. Do not
+claim future pushes deploy automatically until the integration is configured and verified. A failed build must
+not silently replace a working release.
+PHASE 7 — ENVIRONMENT VARIABLES AND SECRETS
+Create or update a safe example environment file using harmless placeholders, update .gitignore, and
+prevent secrets from entering source control. Document which variables belong in frontend hosting versus
+backend hosting. Validate required variables at startup where appropriate, keep development and production
+settings separate, and ensure public frontend variables contain only intentionally public values.
+For a compatible Vite + Supabase project, variables may include VITE_SUPABASE_URL and
+VITE_SUPABASE_ANON_KEY (or the supported public client key for the configured project). Never put a
+Supabase service-role key in Vite variables or any client bundle. Keep backend secrets in secure backend-host
+
+--- page 4 ---
+
+Antigravity + Cline | Cloud Deployment Master Prompt
+Page 4
+environment settings. Never fabricate credentials.
+PHASE 8 — MOBILE TESTING FOR FRIENDS
+For a web app: deploy to a stable HTTPS URL, test mobile layouts and touch interactions, forms, auth,
+navigation, errors, refresh behavior, and common viewport sizes. Add PWA support only if appropriate;
+configure manifest, icons, installation behavior, and service worker carefully. Ensure caching does not leave
+users stuck on stale code. Document how friends open the URL and optionally install the PWA.
+For Flutter, React Native, Expo, or native Android: preserve the framework, configure hosted backend/API
+endpoints, prepare an appropriate test build, and document installation/distribution. Native code changes
+generally require a new build and an authorized distribution mechanism. Use OTA updates only when
+supported and allowed by platform rules. Do not bypass Android security or silently install APKs.
+Clearly explain the difference between deploying a web frontend, updating a backend, and releasing native
+application code.
+PHASE 9 — VERSIONING AND UPDATE MANAGEMENT
+Implement a suitable version/build identifier. For web apps, configure asset caching and invalidation, handle
+stale service worker caches, recover from failed asset loads, avoid unnecessary forced reloads, and show a
+refresh notice if needed. For native apps, keep version/build numbers consistent and document how to
+generate and distribute new builds.
+Do not promise instant updates on every device. Explain the effects of browser caching, offline sessions,
+active sessions, and platform policies.
+PHASE 10 — AUTOMATED TESTING AND CI
+Add checks compatible with the existing stack: build validation, lint, type checking, unit tests, API tests,
+database access and RLS tests, authentication tests, end-to-end smoke tests, and deployment health checks
+where feasible.
+If suitable, add GitHub Actions workflows for safe checks on pushes and pull requests. Use isolated test
+environments and test data. Never run destructive tests against production or automatically alter/delete
+production records. Avoid requiring production credentials in CI unless clearly necessary and safe. Fix
+implementation errors and rerun relevant checks. Distinguish passing tests from checks that could not be run.
+PHASE 11 — SECURITY, PERFORMANCE, AND RELIABILITY
+Review authorization, exposed secrets, CORS, public database access, excessive API calls, unbounded
+queries, duplicate realtime subscriptions, unhandled errors, unsafe uploads, environment configuration,
+mobile layouts, stale assets, missing indexes, sensitive logs, and recovery planning.
+Add appropriate timeouts, bounded retries, error handling, and rate limiting where necessary. Avoid retry
+storms. Never log passwords, tokens, secret keys, or sensitive user data. Avoid unnecessary paid services.
+PHASE 12 — DOCUMENTATION
+Create or update the following files as appropriate, avoiding duplicates if equivalent documentation already
+exists:
+• DEPLOYMENT_AUDIT.md
+• DEPLOYMENT_ARCHITECTURE.md
+• DEPLOYMENT_GUIDE.md
+• DATABASE_SETUP.md
+• ENVIRONMENT_VARIABLES.md
+• TESTING_GUIDE.md
+• ROLLBACK_GUIDE.md
+Explain account setup, GitHub repository connection, hosting, database configuration, environment variables,
+migrations, deployment, mobile testing, persistence/realtime verification, automatic deployment verification,
+rollback, service limits/possible charges, and remaining manual steps. Write for a developer setting up cloud
+deployment for the first time.
+
+--- page 5 ---
+
+Antigravity + Cline | Cloud Deployment Master Prompt
+Page 5
+PHASE 13 — ACTUAL VERIFICATION
+After implementation:
+1. Install dependencies only when appropriate.
+2. Run the production build.
+3. Run lint/type checks and available tests.
+4. Check configuration consistency.
+5. Verify migrations locally where possible.
+6. Review RLS and authorization logic.
+7. Verify API endpoint configuration.
+8. Inspect the final Git diff for unintended changes.
+9. Report all results accurately.
+If credentials are available and deployment is authorized, deploy and verify the actual URL. If credentials are
+missing, do all safe local work and list the exact remaining steps. Never invent a successful deployment.
+IMPORTANT EXECUTION RULES
+ • Work in the existing project; audit before editing.
+ • Preserve existing functionality and avoid unnecessary rewrites.
+ • Do not delete user data, reset remote databases, or overwrite production without authorization.
+ • Do not expose secrets or invent credentials.
+ • Do not claim actions succeeded without verification.
+ • Do not stop after writing a plan: implement all safe, independent tasks.
+ • Ask concise questions only when a real decision or external authorization is needed.
+ • When login, credentials, approval, or account connection is required, explain the exact next step and
+ continue with other safe work.
+FINAL DELIVERABLE
+Provide a final implementation report covering:
+1. Discovered project architecture.
+2. Selected deployment architecture.
+3. Files created/modified.
+4. Database configuration and migrations.
+5. Authentication/authorization changes.
+6. Realtime features implemented.
+7. Automatic deployment configuration.
+8. Mobile testing readiness.
+9. Build and test results.
+10. Security checks performed.
+11. Actual deployment URL, only if successfully deployed.
+12. Remaining account connections/manual steps.
+13. Estimated costs based on verified pricing and stated usage assumptions.
+14. Exact steps for deploying future code changes.
+15. Exact steps for sharing the app with friends.
+16. Known limitations and rollback instructions.
+The goal is to prepare my existing app for cloud-hosted testing, centralized persistent data, secure user
+access, and automated deployments with the least possible manual work.
+START NOW: audit the existing repository, report the initial findings briefly, and implement the solution in
+phases.
